@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'ember-guide',
+    podModulePrefix: 'ember-guide/modules',
     environment,
     rootURL: '/',
     locationType: 'auto',

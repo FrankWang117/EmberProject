@@ -1,17 +1,6 @@
 # ember-guide
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
-
-## Prerequisites
-
-You will need the following things properly installed on your computer.
-
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/)
-* [Yarn](https://yarnpkg.com/)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+作为个人 [Emberjs](https://wwww.emberjs.com) 学习项目。
 
 ## Installation
 
@@ -25,19 +14,6 @@ You will need the following things properly installed on your computer.
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 * Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
 
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Linting
-
-* `yarn lint:js`
-* `yarn lint:js --fix`
 
 ### Building
 
@@ -55,3 +31,11 @@ Specify what it takes to deploy your app.
 * Development Browser Extensions
   * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
   * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+
+## Total Guide  
+
+### Init Emberjs Application  
+
+Init a emberjs application,with Pods.And some useful plugins. 
+
+you can see it in [Ember Guide in CSDN](https://blog.csdn.net/peng_9/article/details/83993084) , or [in Blogger](https://ethonstavern.blogspot.com/2018/11/init-ember-application.html);

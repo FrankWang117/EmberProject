@@ -1,0 +1,28 @@
+<img local-class="ershoufang-info info-img" src={{data.img}} alt="data.title">
+<div local-class="ershoufang-info info-detail">
+    <p local-class="detail-item title">{{data.title}}</p>
+    <p local-class="detail-item house-info">
+        {{#each data.houseInfo as |hinfo|}}
+            {{hinfo}}<span local-class="divide">/</span>
+        {{/each}}
+    </p>
+    <p local-class="detail-item position-info">
+        {{#each data.positionInfo as |pinfo|}}
+            {{pinfo}} <span local-class="divide">/</span>
+        {{/each}}
+    </p>
+    <p local-class="detail-item follow-info">
+        {{#each data.followInfo as |finfo|}}
+            {{finfo}} <span local-class="divide">/</span>
+        {{/each}}
+    </p>
+    <p local-class="detail-item tag-info">
+        {{#each data.tag as |tag|}}
+            <span> {{tag}} </span>
+        {{/each}}
+    </p>
+    <div local-class="price-info">
+        <p local-class="total-price"><span>{{data.totalPrice}}</span> 万 </p>
+        <p local-class="per-price"> <span>单价</span> {{data.perPrice}} <span>元/平米</span> </p>
+    </div>
+</div>

@@ -1,0 +1,93 @@
+.lj-ershoufang {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 43px;
+    .info-img {
+        flex: 0 0 295px;
+        width: 295px;
+        height: 216px;
+    }
+    .info-detail {
+        position: relative;
+        flex: 1;
+        padding: 0 30px;
+        .detail-item {
+            margin: 0;
+            margin-bottom: 16px;
+            &.title {
+                margin-bottom: 28px;
+                width: 500px;
+                height: 22px;
+                font-weight: bold;
+                color: #394043;
+                overflow: hidden;
+                cursor: pointer;
+                &:hover {
+                    color: #dddddd;
+                }
+            }
+            &.house-info {
+                font-weight: bold;
+                color: #666;
+
+            }
+            &.position-info {
+                color: #666;
+                font-size: 14px;
+            }
+            &.follow-info {
+                color: #666;
+                font-size: 14px;
+            }
+            &.tag-info {
+                span {
+                    display: inline-block;
+                    color: #849aae;
+                    font-size: 12px;
+                    line-height: 30px;
+                    padding: 0 11px;
+                    margin-right: 6px;
+                    background-color: #f4f7f9;
+                }
+            }
+            span.divide {
+                margin: 0 8px;
+                font-weight: normal;
+                color: #ddd;
+            }
+            span.divide:last-child {
+                display: none;
+                
+            }
+        }
+        .price-info {
+            position: absolute;
+            right: 30px;
+            top: 34.5%;
+            p {
+                margin: 0;
+            }
+            .total-price {
+                width: 130px;
+                text-align: right;
+
+                font-size: 14px;
+                color: #db4c3f;
+                span {
+                    margin-right: 5px;
+                    font-weight: bold;
+                    font-size: 26px;
+                    font-family: 'tahoma';
+                }
+            }
+            .per-price {
+                position: relative;
+                text-align: right;
+                margin-top: 16px;
+                width: 130px;
+                font-size: 12px;
+                color: #394043;
+            }
+        }
+    }
+}

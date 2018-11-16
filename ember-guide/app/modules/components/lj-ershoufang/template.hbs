@@ -22,7 +22,8 @@
         {{/each}}
     </p>
     <div local-class="price-info">
-        <p local-class="total-price"><span>{{data.totalprice}}</span> 万 </p>
+        <p local-class="total-price"><span {{action 'increaseTotalPrice' data.id}}>{{data.totalprice}}</span> 万
+        </p>
         <p local-class="per-price"> <span>单价</span> {{data.perprice}} <span>元/平米</span> </p>
     </div>
 </div>

@@ -7,7 +7,7 @@ export default function () {
 					type: "ershoufang",
 					id: "ershoufang01",
 					attributes: {
-						img: "https://image1.ljcdn.com/110000-inspection/test-5cca6d6b-1419-46aa-9938-b03dcb90602b.jpeg.296x216.jpg",
+						img: "https://image1.ljcdn.com/110000-inspection/514871d9-f37d-40d1-ac3f-7dbcd61844a9.jpg.296x216.jpg",
 						title: "南北通透两居室 2010年建成 板楼有电梯",
 						address: "鸿业兴园二区",
 						houseinfo: ["鸿业兴园二区 ", "2室1厅", "88.14平米", "南 北", "简装"],
@@ -22,7 +22,7 @@ export default function () {
 					type: "ershoufang",
 					id: "ershoufang02",
 					attributes: {
-						img: "https://image1.ljcdn.com/110000-inspection/test-dabcf77d-5c2c-4601-b528-e557a12deff9.jpeg.296x216.jpg",
+						img: "https://image1.ljcdn.com/x-se/hdic-frame/567ac579-2727-44e8-9cfe-8157431e86f6.png.280x210.jpg",
 						title: "靠近地铁8号线，小区中间位置，中间楼层，已经满五年",
 						address: "和谐家园一区 ",
 						houseinfo: ["和谐家园一区  ", "3室2厅", "124.08平米", "南 北", "简装", "无电梯"],

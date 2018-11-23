@@ -1,0 +1,22 @@
+// .share-data-content {
+// 	border: 1px solid orange;
+// }
+.defined-class {}
+
+.train-container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+
+	.section-left {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 240px;
+		flex: 0 0 240px;
+	}
+
+	.section-right {
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+	}
+}

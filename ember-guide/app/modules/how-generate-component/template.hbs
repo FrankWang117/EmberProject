@@ -1,14 +1,14 @@
 <h1>how to Generate a component</h1>
 <section local-class="ershoufang-list-container">
-    <ul>
-        {{#each model as |item|}}
-            {{lj-ershoufang data=item increaseTotalPrice=(action 'increaseTP')}}
-        {{/each}}
-    </ul>
-    <div>
+	<ul>
+		{{#each model as |item|}}
+			{{lj-ershoufang data=item increaseTotalPrice=(action 'increaseTP')}}
+		{{/each}}
+	</ul>
+	{{!-- <div>
         <h2>数据修改展示区域</h2>
         <p>点击金额，修改为：{{objectAttributes.newTP}}</p>
         <p>是否有新更改： {{objectAttributes.dirtyAttributes}}</p>
         <button local-class="default-btn" {{action "deleteRecord"}}> Delete 1</button>
-    </div>
+    </div> --}}
 </section>

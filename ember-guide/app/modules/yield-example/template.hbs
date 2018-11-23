@@ -1,0 +1,10 @@
+{{outlet}}
+<h2>yield example</h2>
+{{exam-yield}}
+<section>
+	<h2>block example </h2>
+	{{#exam-yield as |yi|}}
+		{{yi.header}}
+		<i>{{yi.title}}</i>
+	{{/exam-yield}}
+</section>

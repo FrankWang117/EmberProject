@@ -1,0 +1,38 @@
+{{!-- {{outlet}} --}}
+<h3><a id="service_99"></a>创建service</h3>
+<pre><code class="prism language-terminal">ember g service change
+</code></pre>
+<p>ember cli就会自动帮我们生成一个service.js 文件：</p>
+<pre><code class="prism language-javascript"><span class="token keyword">import</span> Service <span class="token keyword">from</span> <span class="token string">"@ember/service"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Service<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	<span class="token function">changed</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> text <span class="token operator">+</span> <span class="token string">" changed!"</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3><a id="_113"></a>注入到需要使用到的地方</h3>
+<p>可以注入到 route/controller/component 中，目前以 component 为例：</p>
+<pre><code class="prism language-javascript"><span class="token keyword">import</span> Component <span class="token keyword">from</span> <span class="token string">"@ember/component"</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> inject <span class="token keyword">as</span> service <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@ember/service"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> Component<span class="token punctuation">.</span><span class="token function">extend</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+	<span class="token comment">// 注入方式一</span>
+	change<span class="token punctuation">:</span> <span class="token function">service</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+	<span class="token comment">// 注入方式二</span>
+	mut<span class="token punctuation">:</span> <span class="token function">service</span><span class="token punctuation">(</span><span class="token string">"change"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>注入之后的 service 既可以在 js 文件中使用，亦可以在 handlebars 文件中使用。<br>
+	文档中一些使用 service 的示例为：</p>
+<ul>
+	<li>User/session authentication.</li>
+	<li>Geolocation.</li>
+	<li>WebSockets.</li>
+	<li>Server-sent events or notifications.</li>
+	<li>Server-backed API calls that may not fit Ember Data.</li>
+	<li>Third-party APIs.</li>
+	<li>Logging.</li>
+</ul>
+<h2><a id="_135"></a>总结</h2>
+<p>本文写的比较仓促，肯定存在错误，一些高级用法也没有解释的清楚，实际项目中的应用也未能举例说明，在之后的时间里会不断更新。</p>

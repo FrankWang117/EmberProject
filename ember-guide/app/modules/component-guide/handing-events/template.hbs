@@ -1,0 +1,13 @@
+{{!-- {{outlet}} --}}
+<h3><a id="_73"></a>事件调用</h3>
+<p>在 component.js 文件中，我们可以在内部写一些事件处理逻辑：</p>
+<pre><code class="prism language-javascript">	actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+		<span class="token function">changeText</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token keyword">set</span><span class="token punctuation">(</span><span class="token string">'text'</span><span class="token punctuation">,</span>text <span class="token operator">+</span> <span class="token string">' !'</span><span class="token punctuation">)</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+</code></pre>
+<h3><a id="_82"></a>总结</h3>
+<p>上面就是 emberjs 中 component 的一些基础用法，包含 组件创建/数据传递/动态样式
+	等。在实际的项目中，我们需要从设计原图开始一步步做，这个时候就需要我们拆分页面，将可复用的部分拆分成一个个组件，然后再通过组件的相互嵌套完成一个个页面的拼装。
+</p>

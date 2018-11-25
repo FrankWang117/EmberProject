@@ -12,6 +12,13 @@ Router.map(function () {
   this.route('yield-example');
   this.route('component-guide', function() {
     this.route('generate');
+    this.route('basis-use');
+    this.route('lifecycle');
+    this.route('passing-properties');
+    this.route('customizing');
+    this.route('handing-events');
+    this.route('split');
+    this.route('other');
   });
 });
 

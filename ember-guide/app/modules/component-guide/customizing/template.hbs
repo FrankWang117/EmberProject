@@ -1,0 +1,24 @@
+<h3><a id="_46"></a>自定义组件属性:</h3>
+<ol>
+	<li>修改包裹体的标签：<br>
+		默认的 组件 外部的包裹元素为<code>div</code>，我们可以通过使用 <code>tagName: 'li'</code> 这种语法来修改包裹体的标签；</li>
+	<li>向组件添加 类 名:<br>
+		有以下几种方法:<br>
+		- 在定义的时候通过属性添加: <code>classNames: ['header-title']</code>；<br>
+		- 在调用的时候通过属性传递: <code>{{component-train-passing-properties class='passing-properties-container'}}</code>;<br>
+		- 绑定某一属性，动态添加类：</li>
+</ol>
+<pre><code class="prism language-javascript">	<span class="token comment">//	component-train-passing-properties/component.js</span>
+	classNameBindings<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"showBg:show-background"</span><span class="token punctuation">]</span>
+</code></pre>
+<p>而后在对应的 <code>styles.scss</code>文件内写上样式，这里是添加背景色。<br>
+	在调用端：</p>
+<pre><code class="prism language-handlebars"><span class="token comment">{{!-- train/template.hbs --}}</span>
+<span class="token punctuation">&lt;</span><span class="token variable">section</span> <span class="token variable">local-class</span><span class="token punctuation">=</span><span class="token string">"defined-class"</span><span class="token punctuation">&gt;</span>
+	<span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token variable">component-train-passing-properties</span> <span class="token variable">title</span><span class="token punctuation">=</span><span class="token variable">title</span> <span class="token variable">showBg</span><span class="token punctuation">=</span><span class="token boolean">true</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+	<span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token variable">component-train-passing-properties</span> <span class="token variable">title</span><span class="token punctuation">=</span><span class="token variable">title</span> <span class="token variable">showBg</span><span class="token punctuation">=</span><span class="token boolean">false</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+<span class="token punctuation">&lt;</span><span class="token punctuation">/</span><span class="token variable">section</span><span class="token punctuation">&gt;</span>
+</code></pre>
+<p>可以看到：<br>
+	<img src="https://img-blog.csdnimg.cn/20181122211147529.png" alt="动态绑定类名"><br>
+	如果<code>classNameBindings</code> 绑定的属性的值是一个字符串，那字符串将直接传递入组件的类中。</p>

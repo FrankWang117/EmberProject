@@ -1,0 +1,50 @@
+$defaultDistance: 8px;
+
+.train-container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+
+	.section-left {
+		-webkit-box-flex: 0;
+		-ms-flex: 0 0 240px;
+		flex: 0 0 240px;
+
+		ul {
+			padding: 2*$defaultDistance 20px;
+			list-style: none;
+
+			li {
+				margin: $defaultDistance 0;
+				height: 32px;
+				line-height: 32px;
+				background-color: #ECF5FD;
+
+				a {
+					display: block;
+					padding-left: 2*$defaultDistance;
+					color: #212F40;
+					text-decoration: none;
+
+				}
+
+				&:hover {
+					background-color: #EDF9FD
+				}
+			}
+		}
+	}
+
+	.section-right {
+		-webkit-box-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+
+		.section-inside {
+			margin: 0 auto;
+			padding: 16px 24px;
+			min-width: 720px;
+			max-width: 1220px;
+		}
+	}
+}

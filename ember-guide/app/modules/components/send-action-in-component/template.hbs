@@ -1,0 +1,10 @@
+{{#if hasBlock}}
+	{{yield}}
+{{else}}
+	<section local-class="send-action">
+		<p>没有参数传递</p>
+		<button {{action noParams}}>noParams</button>
+		<p>带参数的传递</p>
+		<button {{action 'hasParams' 'buttonIdinComponent'}}>hasParams</button>
+	</section>
+{{/if}}

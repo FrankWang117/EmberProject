@@ -1,8 +1,8 @@
-import Route from "@ember/routing/route";
+import Route from '@ember/routing/route';
 
 export default Route.extend({
 	model() {
-		return this.store.findAll("ershoufang");
+		return this.store.findAll('ershoufang');
 		// return [
 		// 	{
 		// 		img: "https://image1.ljcdn.com/110000-inspection/test-5cca6d6b-1419-46aa-9938-b03dcb90602b.jpeg.296x216.jpg",
@@ -27,5 +27,11 @@ export default Route.extend({
 		// 		perPrice: 43521
 		// 	}
 		// ];
+	},
+	actions: {
+		increaseTP(id) {
+			console.log('-----------');
+			console.log(id);
+		}
 	}
 });

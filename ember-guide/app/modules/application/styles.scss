@@ -1,3 +1,19 @@
+@import "ember-bootstrap/bootstrap";
+
 .welcome {
-    color: aquamarine;
+	color: aquamarine;
+
+
+}
+
+ul li {
+	cursor: pointer;
+
+	&:global(.active-li) {
+		color: red;
+	}
+
+	&:global(.active) {
+		color: orange;
+	}
 }

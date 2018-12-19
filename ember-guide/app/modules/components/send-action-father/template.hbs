@@ -1,0 +1,13 @@
+{{#if hasBlock}}
+	{{yield}}
+{{else}}
+	<p>这是一层 动作传递 的父组件</p>
+	{{!-- {{send-action-in-component
+		hasParams=(action 'hasParams') 
+		noParams=(action 'noParams' allowKeys='enter')
+	}} --}}
+	{{send-action-in-component
+		noParams=(action noParams)
+		hasParams=(action 'hasParams') 
+	}}
+{{/if}}

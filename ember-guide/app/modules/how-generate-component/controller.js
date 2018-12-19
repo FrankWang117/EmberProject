@@ -1,33 +1,35 @@
-import Controller from "@ember/controller";
+import Controller from '@ember/controller';
+import { alias } from '@ember/object/computed';
 
 export default Controller.extend({
-    actions: {
-        increaseTP(id) {
-            let ershoufang = this.store.peekRecord("ershoufang", id);
-            let newTP = ershoufang.incrementProperty("totalprice");
-            let dirtyAttributes = ershoufang.get("hasDirtyAttributes");
-            let changedAttributes = ershoufang.changedAttributes();
-            let objectAttributes = {
-                newTP: newTP,
-                dirtyAttributes: dirtyAttributes,
-                changedAttributes: changedAttributes
-            };
+	house: alias('model'),
+	actions: {
+		increaseTotalPrice(id) {
+			console.log('in controller');
+			// let ershoufang = this.store.peekRecord('ershoufang', id),
+			// 	newTP = ershoufang.incrementProperty('totalprice'),
+			// 	dirtyAttributes = ershoufang.get('hasDirtyAttributes'),
+			// 	changedAttributes = ershoufang.changedAttributes(),
+			// 	objectAttributes = {
+			// 		newTP: newTP,
+			// 		dirtyAttributes: dirtyAttributes,
+			// 		changedAttributes: changedAttributes
+			// 	};
 
-            console.log(changedAttributes);
-            this.set("objectAttributes", objectAttributes);
-        },
-        deleteRecord() {
-            let ershoufang1 = this.store.peekRecord("ershoufang", "ershoufang01");
+			// this.set('objectAttributes', objectAttributes);
+		},
+		deleteRecord() {
+			let ershoufang1 = this.store.peekRecord('ershoufang', 'ershoufang01');
+
+			// isDeleted = '';
 			/**
 			 * Record.deleteRecord();
 			 */
 
-            ershoufang1.deleteRecord();
-            let isDeleted = ershoufang1.get("isDeleted");
+			ershoufang1.deleteRecord();
+			// isDeleted = ershoufang1.get('isDeleted');
+			ershoufang1.save();
 
-            console.log(isDeleted);
-            ershoufang1.save();
-
-        }
-    }
+		}
+	}
 });

@@ -1,7 +1,26 @@
-{{!-- <h1 local-class="welcome">Welcome to Ember guide</h1>
+<h1 local-class="welcome">Welcome to Ember guide</h1>
 <ul>
-	<li> {{#link-to "howGenerateComponent"}}
+	{{!-- {{#link-to "howGenerateComponent"}}
 			how-generate-component
 		{{/link-to}} </li>
-</ul> --}}
+	<li>
+		{{#link-to "js-handbook"}}
+			handbook for JS
+		{{/link-to}}
+	</li>
+	<li>
+		{{#link-to "send-action"}}
+			send-action in component
+		{{/link-to}}
+	</li> --}}
+	{{#link-to "howGenerateComponent" tagName='li'}}
+		how-generate-component
+	{{/link-to}}
+	{{#link-to "js-handbook" tagName='li'}}
+		handbook for JS
+	{{/link-to}}
+	{{#link-to "send-action" tagName='li' activeClass='active-li'}}
+		send-action in component
+	{{/link-to}}
+</ul>
 {{outlet}}

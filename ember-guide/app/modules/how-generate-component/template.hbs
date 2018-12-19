@@ -2,7 +2,7 @@
 <section local-class="ershoufang-list-container">
 	<ul>
 		{{#each model as |item|}}
-			{{lj-ershoufang data=item increaseTotalPrice=(action 'increaseTP')}}
+			{{lj-ershoufang data=item increaseTP=(action 'increaseTotalPrice' 'first')}}
 		{{/each}}
 	</ul>
 	{{!-- <div>

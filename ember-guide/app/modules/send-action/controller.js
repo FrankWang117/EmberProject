@@ -9,6 +9,12 @@ export default Controller.extend({
 			this.set('btnid', id);
 			console.log(`When you have the params from component,you can do whatever you want.example ,this id ${id} is from send-action-in-component `);
 			// return id;
+		},
+		actionBulle() {
+			console.log('in controller action bulle');
+		},
+		bubble() {
+			console.log('in controller');
 		}
 	}
 });

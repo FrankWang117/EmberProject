@@ -1,26 +1,26 @@
-<h1 local-class="welcome">Welcome to Ember guide</h1>
-<ul>
-	{{!-- {{#link-to "howGenerateComponent"}}
-			how-generate-component
-		{{/link-to}} </li>
-	<li>
-		{{#link-to "js-handbook"}}
-			handbook for JS
-		{{/link-to}}
-	</li>
-	<li>
-		{{#link-to "send-action"}}
-			send-action in component
-		{{/link-to}}
-	</li> --}}
-	{{#link-to "howGenerateComponent" tagName='li'}}
-		how-generate-component
-	{{/link-to}}
-	{{#link-to "js-handbook" tagName='li'}}
-		handbook for JS
-	{{/link-to}}
-	{{#link-to "send-action" tagName='li' activeClass='active-li'}}
-		send-action in component
-	{{/link-to}}
-</ul>
-{{outlet}}
+<section local-class="container">
+	<header>
+		<h1 local-class="welcome">Welcome to Ember guide</h1>
+	</header>
+	<section local-class="content">
+		<aside>
+			<ul>
+				{{#link-to "howGenerateComponent" tagName='li'}}
+					how-generate-component
+				{{/link-to}}
+				{{#link-to "js-handbook" tagName='li'}}
+					handbook for JS
+				{{/link-to}}
+				{{#link-to "send-action" tagName='li' activeClass='active-li' current-when='send-action.index send-action.stone-age'}}
+					send-action in component
+				{{/link-to}}
+				{{#link-to 'send-action.stone-age' tagName='li' activeClass='inside-active' local-class="child-link" }}
+					Stone Age
+				{{/link-to}}
+			</ul>
+		</aside>
+		<section local-class="main-content">
+			{{outlet}}
+		</section>
+	</section>
+</section>

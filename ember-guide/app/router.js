@@ -27,7 +27,9 @@ Router.map(function () {
   this.route('bs-guide', function () {
       this.route('layout');
   });
-  this.route('send-action');
+  this.route('send-action', function() {
+    this.route('stone-age');
+  });
 });
 
 export default Router;

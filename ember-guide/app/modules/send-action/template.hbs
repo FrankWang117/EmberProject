@@ -1,14 +1,19 @@
-<section local-class="actions">
-	<h2>如何做到 action up</h2>
-	在组件中往往有很多需要发送动作到调用层的，有的还需要参数的传递.
-	{{!-- {{send-action-in-component
+{{!-- <section local-class="actions"> --}}
+{{!-- <h2>如何做到 action up</h2>
+	<p>
+		在组件中往往有很多需要发送动作到调用层的，有的还需要参数的传递.
+	</p> --}}
+{{!-- {{send-action-in-component
 		hasParams=(action 'hasParams') 
 		noParams=(action 'noParams' allowKeys='enter')
 	}}
 	<p>从 'hasParams'中传递过来的参数为：</p>
 	<p>{{btnid}}</p> --}}
-	{{send-action-father
+{{!-- {{send-action-father
 		noParams=(action 'noParams' allowKeys='enter')
 		hasParams=(action 'hasParams') 
-	}}
-</section>
+		buttonMethod=(action 'actionBulle')
+	}} --}}
+{{!-- {{#btn-bubble onClick=(action "bubble")}}what btn{{/btn-bubble}} --}}
+{{!-- </section> --}}
+{{outlet}}

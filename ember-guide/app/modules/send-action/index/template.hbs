@@ -1,0 +1,22 @@
+{{!-- <section local-class="actions"> --}}
+<h2>如何做到 action up</h2>
+<p>
+	在组件中往往有很多需要发送动作到调用层的，有的还需要参数的传递，也就是组件内部完全只是做完数据展示作用，不对数据进行更改。如果想更改数据，将动作传递到数据最初传入的地方，进行数据的更改等操作。这也是 DDAU 的主要思想。
+</p>
+<p>
+	这里，我们将演示几种从组件将动作传递上来的几种方式。
+</p>
+{{!-- {{send-action-in-component
+		hasParams=(action 'hasParams') 
+		noParams=(action 'noParams' allowKeys='enter')
+	}}
+	<p>从 'hasParams'中传递过来的参数为：</p>
+	<p>{{btnid}}</p> --}}
+{{!-- {{send-action-father
+		noParams=(action 'noParams' allowKeys='enter')
+		hasParams=(action 'hasParams') 
+		buttonMethod=(action 'actionBulle')
+	}}
+<hr> --}}
+{{!-- {{#btn-bubble onClick=(action "bubble")}}what btn{{/btn-bubble}} --}}
+{{!-- </section> --}}

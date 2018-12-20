@@ -6,5 +6,8 @@
 		<button {{action noParams}}>noParams</button>
 		<p>带参数的传递</p>
 		<button {{action 'hasParams' 'buttonIdinComponent'}}>hasParams</button>
+		<p>冒泡功能实践</p>
+		{{!-- <button {{action actionBulling}}>actionBulling</button> --}}
+		{{btn-bubble buttonMethod=buttonMethod}}
 	</section>
 {{/if}}

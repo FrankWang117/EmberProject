@@ -6,6 +6,13 @@ export default Component.extend({
 			console.log(`in child component ${id}`);
 			this.get('hasParams')(id);
 		}
+		// actionBulling() {
+		// 	console.log('in child component action bulling');
+		// 	return true;
+		// }
+		// bubble() {
+		// 	console.log('inside btn ');
+		// }
 	}
 
 });

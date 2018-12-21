@@ -1,4 +1,4 @@
-<h3>
+{{!-- <h3>
 	石器时代的用法
 </h3>
 <p>
@@ -6,4 +6,116 @@
 </p>
 <h4>例子</h4>
 {{play-btn onClick=(action 'playPause')}}
-{{play-btn-father clickInFather=(action 'nestPlay')}}
+{{play-btn-father clickInFather=(action 'nestPlay')}} --}}
+<section class="stackedit">
+	<div class="stackedit__html">
+		<h3 id="stone-age">Stone Age</h3>
+		<p>在很久以前，大概是 Emberjs 版本在 <code>1</code> 打头的时候，一直使用这 <code>sendAction</code> 这个方法来传递 action 进行冒泡。但是由于在某一版本的 <code>ember cli</code>中，添加了一个新的ESLint
+			规则，叫做 <code>Closure Actions</code> ,这个规则的解释为：</p>
+		<blockquote>
+			<p>Always use closure actions (according to DDAU convention). Exception: only when you need bubbling.</p>
+		</blockquote>
+		<p>并给出了相应的示例，也就是我们这里进行的演示，<strong>这是不再被推荐的使用方法</strong>。</p>
+		<h4 id="示例">示例</h4>
+		<p>创建某一<code>play-btn</code>组件：<br>
+			<code>templates/play-btn.hbs</code></p>
+		<pre class=" language-handlebars"><code class="prism  language-handlebars"><span class="token handlebars-comment handlebars comment"><!-- {{! templates/play-btn.hbs}} --></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>  <span class="token attr-name">{ { action</span>  <span class="token attr-name">'onClick'}}</span><span class="token punctuation">&gt;</span></span>点击操作<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+		<p><code>components/play-btn.js</code></p>
+		<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">//	{{! components/play-btn.js}}</span>
+
+actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+   <span class="token function">onClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'in play btn component'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">sendAction</span><span class="token punctuation">(</span><span class="token string">'onClick'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+		<p>而在我们的调用层中:<br>
+			<code>route/stone-age.hbs</code></p>
+		<pre class=" language-handlebars"><code class="prism  language-handlebars"><span class="token handlebars-comment handlebars comment">{{! route/stone-age.hbs}}</span>
+
+<span class="token handlebars"><span class="token delimiter punctuation">{ {</span><span class="token variable">play-btn</span>  <span class="token variable">onClick</span><span class="token punctuation">=</span><span class="token punctuation">(</span><span class="token variable">action</span>  <span class="token string">'playPause'</span><span class="token punctuation">)</span><span class="token delimiter punctuation">}}</span></span>
+</code></pre>
+		<p><code>controllers/stone-age.js</code></p>
+		<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// controllers/stone-age.js</span>
+
+actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+	<span class="token function">playPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'in route '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+		<p>通过点击页面中 <code>点击操作</code> 按钮，就可以在打印台看到，先是执行了 <code>component.js</code> 中的 <code>action</code>，之后又执行了<code>controller.js</code>
+			中的 <code>action</code>，这就是无嵌套的 <code>component</code>中的动作传递。但是如果我们又嵌套或者我们想要传递参数呢？那又该如何去作呢？</p>
+		<h5 id="带有参数的嵌套传递">带有参数的嵌套传递</h5>
+		<p>修改我们上面写的 <code>play-btn</code> 组件:<br>
+			<code>templates/play-btn.hbs</code></p>
+		<pre class=" language-handlebars"><code class="prism  language-handlebars"><span class="token handlebars-comment handlebars comment">{{! templates/play-btn.hbs}}</span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span>  <span class="token attr-name">{ {action</span>  <span class="token attr-name">'onClick'</span>  <span class="token attr-name">'BTNINCHILDID'}}</span><span class="token punctuation">&gt;</span></span>点击操作<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+		<p><code>components/play-btn.js</code></p>
+		<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">//	 components/play-btn.js</span>
+
+actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+   <span class="token function">onClick</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   	console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'in play btn component'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   	<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">sendAction</span><span class="token punctuation">(</span><span class="token string">'onClick'</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+		<p>我们可以看到在方法<code>this.sendAction(*)</code> 内，多了一个参数 <code>id</code>，这个方法<code>this.sendAction()</code>
+			接受至少一个参数，第一个参数为字符类型，为传递的 <code>action</code>名称，其后跟着的参数均为要传递的值。我们继续往下看，<br>
+			<code>templates/play-btn-father.hbs</code></p>
+		<pre class=" language-handlebars"><code class="prism  language-handlebars"><span class="token handlebars-comment handlebars comment">{{!templates/play-btn-father.hbs}}</span>
+
+<span class="token handlebars"><span class="token delimiter punctuation">{ {</span><span class="token variable">play-btn</span>  <span class="token variable">onClick</span><span class="token punctuation">=</span><span class="token punctuation">(</span><span class="token variable">action</span>  <span class="token string">'clickInFather'</span><span class="token punctuation">)</span><span class="token delimiter punctuation">}}</span></span>
+</code></pre>
+		<p><code>components/play-btn-father.js</code></p>
+		<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">//	 components/play-btn-father.js</span>
+
+actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+	<span class="token function">clickInFather</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">sendAction</span><span class="token punctuation">(</span><span class="token string">'clickInFather'</span><span class="token punctuation">,</span> id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+		<p>这里创建了一个包含 <code>play-btn</code> 组件的父级组件，在父级组件内，我们仍然需要创建一个<code>action</code> 并且使用 <code>this.sendAction</code>
+			来发送我们的动作。我们再来看调用层：<br>
+			<code>route/stone-age.hbs</code></p>
+		<pre class=" language-handlebars"><code class="prism  language-handlebars"><span class="token handlebars-comment handlebars comment">{{! route/stone-age.hbs}}</span>
+<span class="token handlebars"><span class="token delimiter punctuation">{ {</span><span class="token variable">play-btn-father</span>  <span class="token variable">clickInFather</span><span class="token punctuation">=</span><span class="token punctuation">(</span><span class="token variable">action</span>  <span class="token string">'nestPlay'</span><span class="token punctuation">)</span><span class="token delimiter punctuation">}}</span></span>
+</code></pre>
+		<p><code>controllers/stone-age.js</code></p>
+		<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// controllers/stone-age.js</span>
+
+actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+	<span class="token function">nestPlay</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'in controller nest component'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+		<p>在页面上点击这个按钮之后，就会看到</p>
+		<pre class=" language-terminal"><code class="prism  language-terminal">in play btn component 
+BTNINCHILDID
+in controller nest component
+</code></pre>
+		<p>在这里 <code>id</code>为<code>BININCHILDID</code> 也已经从最内部的组件中传递到调用层的 <code>controller</code> 中了。我们就可以拿来使用。</p>
+		<h4 id="总结">总结</h4>
+		<p>这种方法进行的<code>action up</code> 如上文提到的已经很少使用，原因的:</p>
+		<ul>
+			<li>你需要在每一层进行定义 <code>action</code>，并且需要在每一层使用 <code>sendAction</code> ，直到你完全退出这个逻辑嵌套；</li>
+			<li>没有返回值；</li>
+			<li>同样不能调整值；</li>
+			<li>业务逻辑复杂，难以维护。</li>
+		</ul>
+		<p>有问题就要去解决，既然不推荐这种写法，那我们该如何写呢？</p>
+		<blockquote>
+			<p>Written By <a href="https://github.com/frankwang1991/">FrankWang</a>.</p>
+		</blockquote>
+	</div>
+</section>

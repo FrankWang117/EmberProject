@@ -6,8 +6,8 @@ export default Controller.extend({
 			console.log('in route ');
 		},
 		nestPlay(id) {
-			console.log(id);
-			console.log('in controller nest component');
+			console.info(id);
+			console.info('in controller nest component');
 		}
 	}
 });

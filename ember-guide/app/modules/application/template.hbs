@@ -11,11 +11,14 @@
 				{{#link-to "js-handbook" tagName='li'}}
 					handbook for JS
 				{{/link-to}}
-				{{#link-to "send-action" tagName='li' activeClass='active-li' current-when='send-action.index send-action.stone-age'}}
+				{{#link-to "send-action" tagName='li' activeClass='active-li' current-when='send-action.index send-action.stone-age send-action.current-method'}}
 					send-action in component
 				{{/link-to}}
 				{{#link-to 'send-action.stone-age' tagName='li' activeClass='inside-active' local-class="child-link" }}
 					Stone Age
+				{{/link-to}}
+				{{#link-to 'send-action.current-method' tagName='li' activeClass='inside-active' local-class="child-link" }}
+					Current Method
 				{{/link-to}}
 			</ul>
 		</aside>

@@ -1,0 +1,65 @@
+{{play-btn onClick=(action 'playPause')}}
+{{!-- {{play-btn-father click=(action 'playPauseContainer') insideClick=(action 'playPause')}} --}}
+
+<body class="stackedit">
+	<div class="stackedit__html">
+		<h3 id="currentmethod">CurrentMethod</h3>
+		<p>我们依旧使用上文中创建的几个 component ，对它们进行改写。</p>
+		<h4 id="示例">示例</h4>
+		<p>修改上文中的<code>play-btn</code>组件：<br>
+			<code>templates/play-btn.hbs</code></p>
+		<pre class=" language-handlebars"><code class="prism  language-handlebars"><span class="token handlebars-comment handlebars comment">{{! templates/play-btn.hbs}}</span>
+点击操作
+</code></pre>
+		<p><code>components/play-btn.js</code></p>
+		<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">//	{{! components/play-btn.js}}</span>
+
+tagName<span class="token punctuation">:</span> <span class="token string">'button'</span><span class="token punctuation">,</span>
+</code></pre>
+		<p>而在我们的调用层中:<br>
+			<code>route/current-method.hbs</code></p>
+		<pre class=" language-handlebars"><code class="prism  language-handlebars"><span class="token handlebars-comment handlebars comment">{{! route/current-method.hbs}}</span>
+
+<span class="token handlebars"><span class="token delimiter punctuation">{ {</span><span class="token variable">play-btn</span>  <span class="token variable">click</span><span class="token punctuation">=</span><span class="token punctuation">(</span><span class="token variable">action</span>  <span class="token string">'playPause'</span><span class="token punctuation">)</span><span class="token delimiter punctuation">}}</span></span>
+</code></pre>
+		<p><code>controllers/current-method.js</code></p>
+		<pre class=" language-javascript"><code class="prism  language-javascript"><span class="token comment">// controllers/current-method.js</span>
+
+actions<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+	<span class="token function">playPause</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'in route '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+		<p>通过点击页面中 <code>点击操作</code> 按钮，就可以在打印台看到我们想要打印的东西。<br>
+			通过与之前方法的对比，我们发现少了<code>sendAction()</code>这个步骤，而是直接调用 <code>button</code>支持的 <code>click</code>
+			事件来达到我们想要的事件操作。但是如果我们想暴露出的 API 仍然是 <code>onClick</code> ，该如何做呢？<br>
+			首先我们需要在 <code>component.js</code> 中定义一个公共属性<code>onClick:null</code>，默认值为 <code>null</code>，其次我们需要定义 <code>click</code>方法，方法内部需要执行
+			<code>onClick</code> 这个属性(在调用端传入 action 动作 给 <code>onClick</code> ，执行的也就是一个函数了).<br>
+			<code>components/play-btn.js</code></p>
+		<pre class=" language-js"><code class="prism  language-js"><span class="token comment">//	components/play-btn.js</span>
+tagName<span class="token punctuation">:</span> <span class="token string">'button'</span><span class="token punctuation">,</span>
+bubble<span class="token punctuation">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+onClick<span class="token punctuation">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
+<span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">let</span> action <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'onClick'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  
+	<span class="token keyword">if</span> <span class="token punctuation">(</span>action <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">'bubble'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+		<p>最后在 调用端就可以使用<code>onClick</code> 这个属性来传递动作了.<br>
+			<code>route/current-method.hbs</code></p>
+		<pre class=" language-handlebars"><code class="prism  language-handlebars"><span class="token handlebars-comment handlebars comment">{{! route/current-method.hbs}}</span>
+
+<span class="token handlebars"><span class="token delimiter punctuation">{ {</span><span class="token variable">play-btn</span>  <span class="token variable">onClick</span><span class="token punctuation">=</span><span class="token punctuation">(</span><span class="token variable">action</span>  <span class="token string">'playPause'</span><span class="token punctuation">)</span><span class="token delimiter punctuation">}}</span></span>
+</code></pre>
+		<p>需要注意的是，我们在 组件 内部写的 私有方法<code>click</code> ，不是写在 <code>actions</code>
+			这个里面。原因是因为我们使用的这种传递动作的方式，是使用了闭包。这也是为我们将来的定义发送promise 请求的按钮动作做提前部署。</p>
+		<blockquote>
+			<p>Written By <a href="https://github.com/frankwang1991/">FrankWang</a>.</p>
+		</blockquote>
+	</div>
+</body>

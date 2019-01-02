@@ -1,21 +1,21 @@
 module.exports = {
-  root: true,
-  parserOptions: {
-    ecmaVersion: 2017,
-    sourceType: 'module'
-  },
-  plugins: [
-    'ember'
-  ],
-  extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended'
-  ],
-  env: {
-    browser: true
-  },
-  rules: {
-    "no-alert": 1,//禁止使用alert confirm prompt
+	root: true,
+	parserOptions: {
+		ecmaVersion: 2017,
+		sourceType: 'module'
+	},
+	plugins: [
+		'ember'
+	],
+	extends: [
+		'eslint:recommended',
+		'plugin:ember/recommended'
+	],
+	env: {
+		browser: true
+	},
+	rules: {
+		"no-alert": 1,//禁止使用alert confirm prompt
 		"no-array-constructor": 2,//禁止使用数组构造器
 		"no-bitwise": 0,//禁止使用按位运算符
 		"no-caller": 1,//禁止使用arguments.caller或arguments.callee
@@ -189,26 +189,26 @@ module.exports = {
 		"wrap-iife": [2, "inside"],//立即执行函数表达式的小括号风格
 		"wrap-regex": 0,//正则表达式字面量用小括号包起来
 		"yoda": [2, "never"]//禁止尤达条件
-	
-  },
-  overrides: [
-    // node files
-    {
-      files: [
-        'ember-cli-build.js',
-        'testem.js',
-        'blueprints/*/index.js',
-        'config/**/*.js',
-        'lib/*/index.js'
-      ],
-      parserOptions: {
-        sourceType: 'script',
-        ecmaVersion: 2015
-      },
-      env: {
-        browser: false,
-        node: true
-      }
-    }
-  ]
+
+	},
+	overrides: [
+		// node files
+		{
+			files: [
+				'ember-cli-build.js',
+				'testem.js',
+				'blueprints/*/index.js',
+				'config/**/*.js',
+				'lib/*/index.js'
+			],
+			parserOptions: {
+				sourceType: 'script',
+				ecmaVersion: 2015
+			},
+			env: {
+				browser: false,
+				node: true
+			}
+		}
+	]
 };

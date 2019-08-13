@@ -7,30 +7,31 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function () {
-    this.route('howGenerateComponent');
-    this.route('train');
-    this.route('yield-example');
-    this.route('component-guide', function () {
-        this.route('generate');
-        this.route('basis-use');
-        this.route('lifecycle');
-        this.route('passing-properties');
-        this.route('customizing');
-        this.route('handing-events');
-        this.route('split');
-        this.route('other');
-    });
-    this.route('object-guide', function () { });
-    this.route('js-handbook', function () {
-        this.route('es6');
-    });
-    this.route('bs-guide', function () {
-        this.route('layout');
-    });
-    this.route('send-action', function () {
-      this.route('stone-age');
-      this.route('current-method');
-    });
+  this.route('howGenerateComponent');
+  this.route('train');
+  this.route('yield-example');
+  this.route('component-guide', function () {
+      this.route('generate');
+      this.route('basis-use');
+      this.route('lifecycle');
+      this.route('passing-properties');
+      this.route('customizing');
+      this.route('handing-events');
+      this.route('split');
+      this.route('other');
+  });
+  this.route('object-guide', function () { });
+  this.route('js-handbook', function () {
+      this.route('es6');
+  });
+  this.route('bs-guide', function () {
+      this.route('layout');
+  });
+  this.route('send-action', function () {
+    this.route('stone-age');
+    this.route('current-method');
+  });
+  this.route('items-status');
 });
 
 export default Router;

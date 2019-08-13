@@ -1,0 +1,9 @@
+ul {
+    list-style: none;
+    .item {
+        border: 1px solid #eee;
+        &.active {
+            border: 1px solid lightblue;
+        }
+    }
+}
